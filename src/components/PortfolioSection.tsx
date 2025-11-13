@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 import sareeCollection from "@/assets/sarees-collection.jpg";
 import FoldingPreview from "@/components/FoldingPreview";
 import { useLanguage } from "@/contexts/useLanguage";
+
 const p1 = new URL("../../assets/white_saree_p1.jpg", import.meta.url).href;
 const p2 = new URL("../../assets/white_saree_p2.jpg", import.meta.url).href;
 const p3 = new URL("../../assets/white_saree_p3.jpg", import.meta.url).href;
 
 const PortfolioSection = () => {
-  
   const { isTamil, toggleLanguage } = useLanguage();
+
+  const ytChannelUrl = "https://youtube.com/@handloomweavingsarees?si=e-gInNvEO8qI7wpi";
 
   return (
     <section id="portfolio" className="py-12 sm:py-16 md:py-20 bg-muted/30">
@@ -40,7 +42,9 @@ const PortfolioSection = () => {
                   : "Watch the intricate process of hand loom weaving, where skilled artisans bring designs to life, thread by thread, on traditional looms."}
               </p>
               <div className="aspect-video rounded-lg overflow-hidden">
-                <FoldingPreview videoFile="white_weaving_v.mp4" previewSeconds={3} alt="weaving video" />
+                <a href={ytChannelUrl} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                  <FoldingPreview videoFile="white_weaving_v.mp4" previewSeconds={3} alt="weaving video" />
+                </a>
               </div>
             </Card>
 
@@ -55,7 +59,9 @@ const PortfolioSection = () => {
                   : "The delicate art of folding and handling completed sarees, ensuring the fabric maintains its pristine quality and beautiful drape."}
               </p>
               <div className="aspect-video rounded-lg overflow-hidden">
-                <FoldingPreview previewSeconds={3} />
+                <a href={ytChannelUrl} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                  <FoldingPreview previewSeconds={3} />
+                </a>
               </div>
             </Card>
           </div>
@@ -75,10 +81,6 @@ const PortfolioSection = () => {
 
             <Showcase images={[p1, p2, p3]} autoInterval={5000} />
           </Card>
-
-          {/* Language Toggle */}
-          <div className="text-center mt-6">
-          </div>
         </div>
       </div>
     </section>
